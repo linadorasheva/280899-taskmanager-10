@@ -1,7 +1,7 @@
 # Личный проект «Менеджер задач» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ангелина Дорашева](https://up.htmlacademy.ru/ecmascript/10/user/280899).
-* Наставник: `Неизвестно`.
+* Наставник: [Артём Матковский](https://htmlacademy.ru/profile/id1151767).
 
 ---
 
