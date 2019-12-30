@@ -12,7 +12,7 @@ const getHashtagMarkup = (tags) => {
 };
 
 const createTaskTemplate = (task) => {
-  const {description, tags, dueDate, repeatingDays, color, isArchive, isFavorite} = task;
+  const {description, tags, dueDate, repeatingDays, color} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;
