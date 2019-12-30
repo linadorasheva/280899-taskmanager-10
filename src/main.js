@@ -1,3 +1,5 @@
+import {render, RenderPosition} from './util.js';
+
 import {createSiteMenuTemplate} from './components/site-menu.js';
 import {createSortingTemplate} from './components/sorting';
 import {createFilterTemplate} from './components/filter.js';
@@ -16,14 +18,10 @@ const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 const tasks = generateTasks(TASK_COUNT);
 const filters = generateFilters();
 
-const render = (container, template, place = `beforeend`) => {
-  container.insertAdjacentHTML(place, template);
-};
-
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-render(siteHeaderElement, createSiteMenuTemplate());
+render(siteHeaderElement, createSiteMenuTemplate(), RenderPosition.BEFOREEND);
 render(siteMainElement, createFilterTemplate(filters));
 render(siteMainElement, createBoardTemplate());
 
