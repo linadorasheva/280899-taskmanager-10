@@ -1,5 +1,5 @@
 import {MONTH_NAMES} from '../constants.js';
-import {formatTime} from '../util.js';
+import {formatTime, createElement} from '../util.js';
 
 const getHashtagMarkup = (tags) => {
   return tags.map((it) =>
@@ -11,8 +11,8 @@ const getHashtagMarkup = (tags) => {
   ).join(`\n`);
 };
 
-export const createTaskTemplate = (task) => {
-  const {description, tags, dueDate, repeatingDays, color, isArchive, isFavorite} = task;
+const createTaskTemplate = (task) => {
+  const {description, tags, dueDate, repeatingDays, color} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;
@@ -70,3 +70,26 @@ export const createTaskTemplate = (task) => {
     </div>
   </article>`;
 };
+
+export default class Task {
+  constructor(task) {
+    this._task = task;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createTaskTemplate(this._task);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
